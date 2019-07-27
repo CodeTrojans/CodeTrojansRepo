@@ -7,7 +7,7 @@ public class BorrowBookUI {
 
 	private BorrowBookControl CONTROL;
 	private Scanner input;
-	private UI_STATE StaTe;
+	private UI_STATE State;
 
 	
 	public BorrowBookUI(BorrowBookControl control) {
@@ -85,7 +85,7 @@ public class BorrowBookUI {
 					
 				
 			case FINALISING:
-				String Ans = input("Commit loans? (Y/N): ");
+				Strin Ans = input("Commit loans? (Y/N): ");
 				if (Ans.toUpperCase().equals("N")) {
 					CONTROL.cancel();
 					
