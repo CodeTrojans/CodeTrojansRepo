@@ -46,21 +46,21 @@ public class  Book implements Serializable {//'Class name changed from 'book' to
 
 
 	
-	public boolean AVAILABLE() {
-		return State == STATE.AVAILABLE;
-	}
+	public boolean isAvaialble() {//'AVAILABLE' IS CHANGED TO 'isAvaiable'
+        return bookState == State.BOOK_AVAILABLE; // 'State' is changed to 'bookState'
+    }
 
-	
-	public boolean On_loan() {
-		return State == STATE.ON_LOAN;
-	}
+    
+    public boolean isOnLoan() {//'On_loan' IS CHANGED TO 'isOnLoan'
+        return bookState == State.BOOK_ON_LOAN;// 'State' is changed to 'bookState'
+    }
 
-	
-	public boolean IS_Damaged() {
-		return State == STATE.DAMAGED;
-	}
+    
+    public boolean isDamaged() {//'DAMAGED' IS CHANGED TO 'isdamaged'
+        return bookState == State.BOOK_DAMAGED;// 'State' is changed to 'bookState'
+    }
 
-	
+
 	public void Borrow() {
 		if (State.equals(STATE.AVAILABLE)) {
 			State = STATE.ON_LOAN;
