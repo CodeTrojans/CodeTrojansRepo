@@ -2,7 +2,7 @@ import java.io.Serializable;
 
 
 @SuppressWarnings("serial")
-public class book implements Serializable {
+public class  Book implements Serializable {//'Class name changed from 'book' to 'Book'
 	
 	private String TITLE;
 	private String AUTHOR;
