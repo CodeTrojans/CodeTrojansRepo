@@ -61,15 +61,15 @@ public class  Book implements Serializable {//'Class name changed from 'book' to
     }
 
 
-	public void Borrow() {
-		if (State.equals(STATE.AVAILABLE)) {
-			State = STATE.ON_LOAN;
-		}
-		else {
-			throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", State));
-		}
-		
-	}
+	public void isBorrowed() {//'BORROWED' IS CHANGED TO 'isBorrowed'
+        if (bookState.equals(State.BOOK_AVAILABLE)) {// 'State' is changed to 'bookState'
+            bookState = State.BOOK_ON_LOAN;// 'State' is changed to 'bookState'
+        }
+        else {
+            throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", bookState));
+        }// 'State' is changed to 'bookState'
+        
+    }
 
 
 	public void Return(boolean DAMAGED) {
