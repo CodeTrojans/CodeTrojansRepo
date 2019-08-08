@@ -4,11 +4,11 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class  Book implements Serializable {//'Class name changed from 'book' to 'Book'
 	
-	private String TITLE;
-	private String AUTHOR;
-	private String CALLNO;
-	private int ID;
-	
+	private String bookTitle;//'TITLE' is changed to 'bookTitle'
+    private String bookAuthor; //'AUTHOR' is changed to 'bookauthor'
+    private String bookCallNo; //'CALLNO' is changed to 'bookCallNo'
+    private int bookId;//'ID'is changed to 'bookId'
+
 	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private STATE State;
 	
