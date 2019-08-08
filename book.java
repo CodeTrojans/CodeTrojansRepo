@@ -9,10 +9,13 @@ public class  Book implements Serializable {//'Class name changed from 'book' to
     private String bookCallNo; //'CALLNO' is changed to 'bookCallNo'
     private int bookId;//'ID'is changed to 'bookId'
 
-	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
-	private STATE State;
-	
-	
+	private enum State {
+        BOOK_AVAILABLE, BOOK_ON_LOAN, BOOK_DAMAGED, BOOK_RESERVED
+    };//'all constants are changed as per guidelines'
+
+    private STATE bookState;//'state variable is changed to bookState'
+
+
 	public book(String author, String title, String callNo, int id) {
 		this.AUTHOR = author;
 		this.TITLE = title;
