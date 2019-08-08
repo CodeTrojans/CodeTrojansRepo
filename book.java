@@ -16,13 +16,13 @@ public class  Book implements Serializable {//'Class name changed from 'book' to
     private STATE bookState;//'state variable is changed to bookState'
 
 
-	public book(String author, String title, String callNo, int id) {
-		this.AUTHOR = author;
-		this.TITLE = title;
-		this.CALLNO = callNo;
-		this.ID = id;
-		this.State = STATE.AVAILABLE;
-	}
+	public Book(String author, String title, String callNo, int id) {
+        this.bookAuthor = author;
+        this.bookTitle = title;//'TITLE' is changed to 'bookTitle'
+        this.bookCallNo = callNo;//'CALLNO' is changed to 'bookCallNo'
+        this.bookId = id;//'ID'is changed to 'bookId'
+        this.bookState = State.BOOK_AVAILABLE;//'AVAIALABLE' is changed to BOOK_AVAILABLE
+    }
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
