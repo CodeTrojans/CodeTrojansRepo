@@ -25,15 +25,15 @@ public class  Book implements Serializable {//'Class name changed from 'book' to
     }
 	
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Book: ").append(ID).append("\n")
-		  .append("  Title:  ").append(TITLE).append("\n")
-		  .append("  Author: ").append(AUTHOR).append("\n")
-		  .append("  CallNo: ").append(CALLNO).append("\n")
-		  .append("  State:  ").append(State);
-		
-		return sb.toString();
-	}
+        StringBuilder sb = new StringBuilder();
+        sb.append("Book: ").append(bookId).append("\n")//'ID'is changed to 'bookId'
+          .append("  Title:  ").append(bookTitle).append("\n")//'TITLE' is changed to 'bookTitle'
+          .append("  Author: ").append(bookAuthor).append("\n")//'AUTHOR' is changed to 'bookauthor'
+          .append("  CallNo: ").append(bookCallNo).append("\n")//'CALLNO' is changed to 'bookCallNo'
+          .append("  State:  ").append(bookState);//'state variable is changed to bookState'
+        
+        return sb.toString();
+    }
 
 	public Integer ID() {
 		return ID;
