@@ -35,13 +35,14 @@ public class  Book implements Serializable {//'Class name changed from 'book' to
         return sb.toString();
     }
 
-	public Integer ID() {
-		return ID;
-	}
+	public Integer getbookId() {//'ID' is changed to 'getbookId'
+        return bookId;//'ID'is changed to 'bookId'
+    }
 
-	public String TITLE() {
-		return TITLE;
-	}
+    public String getbookTitle() {//'TITLE' is changed to 'getbookTitle'
+        return bookTitle;//'TITLE' is changed to 'bookTitle'
+    }
+
 
 
 	
