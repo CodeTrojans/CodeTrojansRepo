@@ -87,14 +87,13 @@ public class  Book implements Serializable {//'Class name changed from 'book' to
     }
 
 	
-	public void Repair() {
-		if (State.equals(STATE.DAMAGED)) {
-			State = STATE.AVAILABLE;
-		}
-		else {
-			throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", State));
-		}
-	}
-
-
+	public void isRepaired() {//Repaired is changed to 'isRepaired'
+        if (bookState.equals(State.BOOK_DAMAGED)) {// 'State' is changed to 'bookState'
+            bookState = State.BOOK_AVAILABLE;// 'State' is changed to 'bookState'
+        }
+        else {
+            throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", bookState));
+        }// 'State' is changed to 'bookState'
+    }
 }
+
