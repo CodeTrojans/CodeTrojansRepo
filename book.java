@@ -12,7 +12,7 @@ public class Book implements Serializable {// 'Class name changed from 'book' to
 		BOOK_AVAILABLE, BOOK_ON_LOAN, BOOK_DAMAGED, BOOK_RESERVED
 	};// 'all constants are changed as per guidelines'
 
-	private STATE bookState;// 'state variable is changed to bookState'
+	private State bookState;// 'state variable is changed to bookState'
 
 	public Book(String author, String title, String callNo, int id) {
 		this.bookAuthor = author;
@@ -33,7 +33,7 @@ public class Book implements Serializable {// 'Class name changed from 'book' to
 		return sb.toString();
 	}
 
-	public Int getbookId() {// 'ID' is changed to 'getbookId'
+	public int getbookId() {// 'ID' is changed to 'getbookId'
 		return bookId;// 'ID'is changed to 'bookId'
 	}
 
