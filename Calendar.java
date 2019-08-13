@@ -3,26 +3,26 @@ import java.util.concurrent.TimeUnit;
 
 public class Calendar {
 	
-	private static Calendar SeLf;
-	private static java.util.Calendar CaLeNdAr;
+	private static Calendar self; // change 'SeLf' to 'self'
+	private static java.util.Calendar calendar;// Change 'CaLeNdAr' to 'calendar'
 	
 	
 	private Calendar() {
-		CaLeNdAr = java.util.Calendar.getInstance();
+		calendar = java.util.Calendar.getInstance();// 'CaLeNdAr' is changed to 'calendar'
 	}
 	
 	public static Calendar INSTANCE() {
-		if (SeLf == null) {
-			SeLf = new Calendar();
+		if (self == null) {//  'SeLf' is changed to 'self'
+			self = new Calendar();//  'SeLf' is changed to 'self'
 		}
-		return SeLf;
+		return self;
 	}
 	
 	public void incrementDate(int days) {
-		CaLeNdAr.add(java.util.Calendar.DATE, days);		
+		calendar.add(java.util.Calendar.DATE, days);	//   'CaLeNdAr' is changed to 'calendar'	
 	}
 	
-	public synchronized void Set_dATE(Date date) {
+	public synchronized void Set_dATE(Date date) { // 'Set_dATE' is changed to 'setDate'
 		try {
 			CaLeNdAr.setTime(date);
 	        CaLeNdAr.set(java.util.Calendar.HOUR_OF_DAY, 0);  
