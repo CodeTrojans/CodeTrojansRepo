@@ -1,5 +1,5 @@
 import java.io.Serializable;
-
+//File name changed to 'book' to 'Book'
 @SuppressWarnings("serial")
 public class Book implements Serializable {// 'Class name changed from 'book' to 'Book'
 
