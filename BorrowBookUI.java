@@ -3,24 +3,24 @@ import java.util.Scanner;
 
 public class BorrowBookUI {
 	
-	public static enum UI_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
+	public static enum UiState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };// UiState is a change based to code guidelines
 
-	private BorrowBookControl CONTROL;
-	private Scanner input;
-	private UI_STATE StaTe;
+	private BorrowBookControl bookControl;// Control is changed to bookControl
+	private Scanner inputScanner;// input is changed to inputScanner
+	private UiState uiState;// State is changed to uistate, UI_State is changed to UiSate
 
 	
 	public BorrowBookUI(BorrowBookControl control) {
-		this.CONTROL = control;
-		input = new Scanner(System.in);
-		StaTe = UI_STATE.INITIALISED;
+		this.bookControl = control;// Control is changed to bookControl
+		inputScanner = new Scanner(System.in);// input is changed to inputScanner
+		uiState = UiState.INITIALISED;// State is changedto uistate
 		control.setUI(this);
 	}
 
 	
-	private String input(String prompt) {
-		System.out.print(prompt);
-		return input.nextLine();
+	private String inputScanner(String prompt) {
+		System.out.print(prompt);// input is changed to inputScanner
+		return inputScanner.nextLine();
 	}	
 		
 		
@@ -29,8 +29,8 @@ public class BorrowBookUI {
 	}
 	
 			
-	public void Set_State(UI_STATE STATE) {
-		this.StaTe = STATE;
+	public void setState(UiState STATE) {//UI_State is changed to UiSate
+		this.uiState = STATE;// State is changed to uistate
 	}
 
 	
@@ -39,7 +39,7 @@ public class BorrowBookUI {
 		
 		while (true) {
 			
-			switch (StaTe) {			
+			switch (uiState) {	// State is changed to uistate		
 			
 			case CANCELLED:
 				output("Borrowing Cancelled");
@@ -47,14 +47,14 @@ public class BorrowBookUI {
 
 				
 			case READY:
-				String MEM_STR = input("Swipe member card (press <enter> to cancel): ");
-				if (MEM_STR.length() == 0) {
-					CONTROL.cancel();
+				String memberInfo = inputScanner("Swipe member card (press <enter> to cancel): ");//Mem_Str is changed to memberinfo
+				if (memberInfo.length() == 0) {
+					bookControl.cancel();
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(MEM_STR).intValue();
-					CONTROL.Swiped(Member_ID);
+					int memberId = Integer.valueOf(memberInfo).intValue();//Mem_Str is changed to memberinfo
+					bookControl.swiped(memberId);// Swiped is changed to swiped
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
@@ -63,20 +63,20 @@ public class BorrowBookUI {
 
 				
 			case RESTRICTED:
-				input("Press <any key> to cancel");
-				CONTROL.cancel();
+				inputScanner("Press <any key> to cancel");
+				bookControl.cancel();
 				break;
 			
 				
 			case SCANNING:
-				String Book_Str = input("Scan Book (<enter> completes): ");
-				if (Book_Str.length() == 0) {
-					CONTROL.Complete();
+				String bookInfo= inputScanner("Scan Book (<enter> completes): "); //'Book_str' is changed to bookInfo
+				if (bookInfo.length() == 0) {
+					bookControl.processComplete();//' Complete' is changed to processComplete
 					break;
 				}
 				try {
-					int BiD = Integer.valueOf(Book_Str).intValue();
-					CONTROL.Scanned(BiD);
+					int bookId = Integer.valueOf(bookInfo).intValue();
+					bookControl.scanned(bookId);//'Scanned' is changed to scanned
 					
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
@@ -85,13 +85,13 @@ public class BorrowBookUI {
 					
 				
 			case FINALISING:
-				String Ans = input("Commit loans? (Y/N): ");
-				if (Ans.toUpperCase().equals("N")) {
-					CONTROL.cancel();
+				String answer = inputScanner("Commit loans? (Y/N): ");//'Ans' is changed to answer
+				if (answer.toUpperCase().equals("N")) {
+					bookControl.cancel();
 					
 				} else {
-					CONTROL.Commit_LOans();
-					input("Press <any key> to complete ");
+					bookControl.commitLoans();//commitLoans is changed as per code guidelines
+					inputScanner("Press <any key> to complete ");
 				}
 				break;
 				
@@ -103,13 +103,13 @@ public class BorrowBookUI {
 				
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("BorrowBookUI : unhandled state :" + StaTe);			
+				throw new RuntimeException("BorrowBookUI : unhandled state :" + uiState);			
 			}
 		}		
 	}
 
 
-	public void Display(Object object) {
+	public void display(Object object) {//'Display is changed to 'display'
 		output(object);		
 	}
 
