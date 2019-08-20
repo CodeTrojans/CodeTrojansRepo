@@ -3,51 +3,51 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-public class loan implements Serializable {
+public class Loan implements Serializable { // "loan" changed to "Loan"
 	
-	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
+	public Static  Loan State { CURRENT, OVER_DUE, DISCHARGED };  // "LOAN_STATE" changed to "Loan state" 
 	
-	private int ID;
-	private book B;
-	private member M;
+	private int Id; // "ID" changed to Id
+	private Book B;// "book" changed to Book
+	private Member M; // "member" changed to "Member"
 	private Date D;
-	private LOAN_STATE state;
+	private Loan State State; // "LOAN_STATE" changed to Loan State, 'state to State
 
 	
-	public loan(int loanId, book book, member member, Date dueDate) {
-		this.ID = loanId;
-		this.B = book;
-		this.M = member;
-		this.D = dueDate;
-		this.state = LOAN_STATE.CURRENT;
+	public Loan(int loanId, book book, member member, Date dueDate) {
+		this.Id = LoanId;
+		this.B = Book;
+		this.M = Member;
+		this.D = DueDate;
+		this.State = LOAN_STATE.CURRENT;//"LOAN_STATE.CURRENT" changed to Loan State.Current
 	}
 
 	
-	public void checkOverDue() {
-		if (state == LOAN_STATE.CURRENT &&
-			Calendar.INSTANCE().Date().after(D)) {
-			this.state = LOAN_STATE.OVER_DUE;			
+	public void Checkoverdue() { // checkOverDue changed to Checkoverdue
+		if (state == LOAN_STATE.CURRENT && //"LOAN_STATE.CURRENT" changed to Loan State.Current
+			Calendar.Instance().Date().After(D)) { //"INSTANCE" changed to Instance
+			this.state = Loan State.OverDue; //"LOAN_STATE.OVER_DUE" changed to Loan State.Overdue		 	
 		}
 	}
 
 	
-	public boolean OVer_Due() {
-		return state == LOAN_STATE.OVER_DUE;
+	public boolean Overdue() { //"OVERDUE" changed to OVERDUE
+		return state == Loan State.OverDue; //"LOAN_STATE.OVER_DUE" changed to Loan State.Overdue
 	}
 
 	
-	public Integer ID() {
-		return ID;
+	public Integer ID() { // "ID" changed to Id
+		return ID;// "ID" changed to Id
 	}
 
 
-	public Date Get_Due_Date() {
+	public Date Get DueDate() { //"GET DUE DATE" changed to Get DueDate
 		return D;
 	}
 	
 	
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy"); //"MM" changed to mm
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("Loan:  ").append(ID).append("\n")
@@ -61,18 +61,18 @@ public class loan implements Serializable {
 	}
 
 
-	public member Member() {
+	public Member Member() { "member" changed to "Member"
 		return M;
 	}
 
 
-	public book Book() {
+	public Book Book() { // "book" changed to Book
 		return B;
 	}
 
 
-	public void DiScHaRgE() {
-		state = LOAN_STATE.DISCHARGED;		
+	public void Discharge() { //"DISCHARGE" changed to Discharge
+		state = Loan State.Discharged;	//"LOAN_STATE.DISCHARGE" changed to Loan State.Discharged	
 	}
 
 }
