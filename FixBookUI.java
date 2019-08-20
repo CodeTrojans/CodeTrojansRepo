@@ -5,40 +5,40 @@ public class FixBookUI {
 
 	public static enum UI_STATE { INITIALISED, READY, FIXING, COMPLETED };
 
-	private FixBookControl CoNtRoL;
+	private FixBookControl fixBookControl;// 'CoNtRoL' is changed to 'fixBookControl'
 	private Scanner input;
-	private UI_STATE StAtE;
+	private UI_STATE uiState;// 'StAtE' is changed to 'uiState'
 
 	
 	public FixBookUI(FixBookControl control) {
-		this.CoNtRoL = control;
+		this.fixBookControl = control;
 		input = new Scanner(System.in);
-		StAtE = UI_STATE.INITIALISED;
+		uiState = UI_STATE.INITIALISED;
 		control.Set_Ui(this);
 	}
 
 
 	public void Set_State(UI_STATE state) {
-		this.StAtE = state;
+		this.uiState = state;
 	}
 
 	
-	public void RuN() {
+	public void run() {// 'RuN' is changed to 'run'
 		output("Fix Book Use Case UI\n");
 		
 		while (true) {
 			
-			switch (StAtE) {
+			switch (uiState) {
 			
 			case READY:
 				String Book_STR = input("Scan Book (<enter> completes): ");
 				if (Book_STR.length() == 0) {
-					CoNtRoL.SCannING_COMplete();
+					fixBookControl.scanningComplete();// 'SCannING_COMplete' is changed to 'scanningComplete'
 				}
 				else {
 					try {
 						int Book_ID = Integer.valueOf(Book_STR).intValue();
-						CoNtRoL.Book_scanned(Book_ID);
+						fixBookControl.Book_scanned(Book_ID);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -47,12 +47,12 @@ public class FixBookUI {
 				break;	
 				
 			case FIXING:
-				String AnS = input("Fix Book? (Y/N) : ");
+				String answer = input("Fix Book? (Y/N) : "); //'Ans' is changed to 'answer'
 				boolean FiX = false;
-				if (AnS.toUpperCase().equals("Y")) {
+				if (answer.toUpperCase().equals("Y")) {
 					FiX = true;
 				}
-				CoNtRoL.FIX_Book(FiX);
+				fixBookControl.FIX_Book(FiX);
 				break;
 								
 			case COMPLETED:
@@ -61,7 +61,7 @@ public class FixBookUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + uiState);			
 			
 			}		
 		}
