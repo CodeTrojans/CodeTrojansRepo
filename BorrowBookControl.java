@@ -109,7 +109,7 @@ public class BorrowBookControl {
     }
 
     
-    public void cancel() {//'Cancel is changed to cancel
+    public void cancel() {//'Cancel is changed to cancel'
         bookUi.setState(BorrowBookUI.UiState.CANCELLED);
         State = ControlState.CANCELLED;
     }
