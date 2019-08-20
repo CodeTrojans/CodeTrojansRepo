@@ -15,7 +15,7 @@ public class FixBookControl {
 	}
 	
 	
-	public void Set_Ui(FixBookUI ui) {
+	public void setUi(FixBookUI ui) { //'Set_Ui' is changed to 'setUi'
 		if (!controlState.equals(CONTROL_STATE.INITIALISED)) {
 			throw new RuntimeException("FixBookControl: cannot call setUI except in INITIALISED state");
 		}	
@@ -45,11 +45,11 @@ public class FixBookControl {
 	}
 
 
-	public void FIX_Book(boolean MUST_fix) {
+	public void fixBook(boolean MUST_fix) {// 'FIX_Book' is changed to 'fixBook' and  'MUST_fix' is changed to 'mustFix'
 		if (!controlState.equals(CONTROL_STATE.FIXING)) {
 			throw new RuntimeException("FixBookControl: cannot call fixBook except in FIXING state");
 		}	
-		if (MUST_fix) {
+		if (mustFix) {
 			library.Repair_BOOK(book);
 		}
 		book = null;
