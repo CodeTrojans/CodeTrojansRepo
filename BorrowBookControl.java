@@ -16,7 +16,7 @@ public class BorrowBookControl {
 
     private List<Book> PENDING; //'book' is changed to Book
     private List<Loan> COMPLETED;// 'loan' is changed to Loan
-    private Book bookinfo;// 'book is changed to Book', 'BOOK is changed to 'bookinfo'
+    private Book bookInfo;// 'book is changed to Book', 'BOOK is changed to 'bookInfo'
 
     public BorrowBookControl() {
         this.bookLibrary=library.getInstance(); //'Instance is changed to getinstance'// 'LIBRARY' is changed to 'bookLibrary'
@@ -53,20 +53,20 @@ public class BorrowBookControl {
     
     
     public void scanned(int bookId) {// Scanned is changed to scanned
-        bookinfo = null;// 'BOOK' is changed to bookinfo
+        bookInfo = null;// 'BOOK' is changed to bookInfo
         if (!State.equals(ControlState.SCANNING)) {//'ControlState is changed to ControlState'
             throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
         }   
-        bookinfo = bookLibrary.Book(bookId);// 'BOOK' is changed to bookinfo
-        if (bookinfo == null) {// 'BOOK' is changed to bookinfo
+        bookInfo = bookLibrary.Book(bookId);// 'BOOK' is changed to bookInfo
+        if (bookInfo == null) {// 'BOOK' is changed to bookInfo
             bookUi.display("Invalid bookId");//'UI' is changed to 'bookUi'
             return;
         }
-        if (!Book.isAvaialble()) {// 'AVAILABLE 'is changed to 'isAvailable'
+        if (!bookInfo.isAvaialble()) {// 'AVAILABLE 'is changed to 'isAvailable'
             bookUi.display("Book cannot be borrowed");//'UI' is changed to 'bookUi'
             return;
         }
-        PENDING.add(bookinfo);//'BOOK' is changed to bookinfo
+        PENDING.add(bookInfo);//'BOOK' is changed to bookInfo
         for (Book B : PENDING) {
             bookUi.display(B.toString());//'UI' is changed to 'bookUi'
         }
@@ -109,7 +109,7 @@ public class BorrowBookControl {
     }
 
     
-    public void cancel() {//'Cancel is changed to cancel
+    public void cancel() {//'Cancel is changed to cancel'
         bookUi.setState(BorrowBookUI.UiState.CANCELLED);
         State = ControlState.CANCELLED;
     }
