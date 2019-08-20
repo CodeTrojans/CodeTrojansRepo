@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class library implements Serializable {
+public class Library implements Serializable {// 'library' is changed to 'Library'
 	
 	private static final String libraryFile = "library.obj";
 	private static final int loanLimit = 2;
@@ -23,56 +23,56 @@ public class library implements Serializable {
 	private static final double maxFinesOwed = 1.0;
 	private static final double damageFee = 2.0;
 	
-	private static library SeLf;
-	private int BOOK_ID;
-	private int MEMBER_ID;
-	private int LOAN_ID;
-	private Date LOAN_DATE;
+	private static Library self; // 'library' is changed to 'Library' and 'SeLf' is changed to 'self'
+	private int bookId;//'BOOK_ID' is changed to 'bookId'
+	private int memberId;//'MEMBER_ID' is changed to 'memberId'
+	private int loanId;//'LOAN_ID' is changed to 'loanId'
+	private Date loanDate;//'LOAN_DATE' is changed to 'loanDate'
 	
-	private Map<Integer, book> CATALOG;
-	private Map<Integer, member> MEMBERS;
-	private Map<Integer, loan> LOANS;
-	private Map<Integer, loan> CURRENT_LOANS;
-	private Map<Integer, book> DAMAGED_BOOKS;
+	private Map<Integer, book> catalog; //'CATALOG' is changed to 'catalog'
+	private Map<Integer, member> members;//'MEMBERS' is changed to 'members'
+	private Map<Integer, loan> loans;//'LOANS' is changed to 'loans'
+	private Map<Integer, loan> currentLoans;//'CURRENT_LOANS' is changed to 'currentLoans'
+	private Map<Integer, book> damagedBooks;//'DAMAGED_BOOKS' is changed to 'damagedBooks'
 	
 
-	private library() {
-		CATALOG = new HashMap<>();
-		MEMBERS = new HashMap<>();
-		LOANS = new HashMap<>();
-		CURRENT_LOANS = new HashMap<>();
-		DAMAGED_BOOKS = new HashMap<>();
-		BOOK_ID = 1;
-		MEMBER_ID = 1;		
-		LOAN_ID = 1;		
+	private Library() {
+		catalog = new HashMap<>();
+		members = new HashMap<>();
+		loans = new HashMap<>();
+		currentLoans = new HashMap<>();
+		damagedBooks = new HashMap<>();
+		bookId = 1;
+		memberId = 1;		
+		loanId = 1;		
 	}
 
 	
-	public static synchronized library INSTANCE() {		
-		if (SeLf == null) {
+	public static synchronized Library INSTANCE() {		
+		if (self == null) {
 			Path PATH = Paths.get(libraryFile);			
 			if (Files.exists(PATH)) {	
 				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
 			    
-					SeLf = (library) LiF.readObject();
-					Calendar.INSTANCE().Set_dATE(SeLf.LOAN_DATE);
+					self = (Library) LiF.readObject();
+					Calendar.INSTANCE().Set_dATE(self.loanDate);
 					LiF.close();
 				}
 				catch (Exception e) {
 					throw new RuntimeException(e);
 				}
 			}
-			else SeLf = new library();
+			else self = new Library();
 		}
-		return SeLf;
+		return self;
 	}
 
 	
-	public static synchronized void SAVE() {
-		if (SeLf != null) {
-			SeLf.LOAN_DATE = Calendar.INSTANCE().Date();
+	public static synchronized void save() {//'SAVE' is changed to 'save'
+		if (self != null) {
+			self.loanDate = Calendar.INSTANCE().Date();
 			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
-				LoF.writeObject(SeLf);
+				LoF.writeObject(self);
 				LoF.flush();
 				LoF.close();	
 			}
@@ -83,81 +83,81 @@ public class library implements Serializable {
 	}
 
 	
-	public int BookID() {
-		return BOOK_ID;
+	public int getBookId() {//'BookID' is changed to 'getBookId'
+		return bookId;
 	}
 	
 	
-	public int MemberID() {
-		return MEMBER_ID;
+	public int getMemberId() {//'MemberID' is changed to 'getMemberId'
+		return memberId;
 	}
 	
 	
-	private int NextBID() {
-		return BOOK_ID++;
+	private int getNextBookId() {//'NextBID' is changed to 'getNextBookId'
+		return bookId++;
 	}
 
 	
-	private int NextMID() {
-		return MEMBER_ID++;
+	private int getNextMemberId() {//'NextMID' is changed to 'getNextMemberId'
+		return memberId++;
 	}
 
 	
-	private int NextLID() {
-		return LOAN_ID++;
+	private int getNextLoanId() {//'NextLID' is changed to 'getNextLoanId'
+		return loanId++;
 	}
 
 	
-	public List<member> MEMBERS() {		
-		return new ArrayList<member>(MEMBERS.values()); 
+	public List<Member> getMembers() {	//'members' is changed to 'getMembers'	
+		return new ArrayList<Member>(members.values()); 
 	}
 
 
-	public List<book> BOOKS() {		
-		return new ArrayList<book>(CATALOG.values()); 
+	public List<Book> getBooks() {		//'BOOKS' is changed to 'getBooks'
+		return new ArrayList<book>(catalog.values()); 
 	}
 
 
-	public List<loan> CurrentLoans() {
-		return new ArrayList<loan>(CURRENT_LOANS.values());
+	public List<loan> getCurrentLoans() {//'CurrentLoans' is changed to 'getCurrentLoans'
+		return new ArrayList<loan>(currentLoans.values());
 	}
 
 
-	public member Add_mem(String lastName, String firstName, String email, int phoneNo) {		
+	public member AddMember(String lastName, String firstName, String email, int phoneNo) {		//'Add_Mem' is changed to 'AddMember'
 		member member = new member(lastName, firstName, email, phoneNo, NextMID());
-		MEMBERS.put(member.GeT_ID(), member);		
+		members.put(member.GeT_ID(), member);		
 		return member;
 	}
 
 	
-	public book Add_book(String a, String t, String c) {		
+	public book AddBook(String a, String t, String c) {//'Add_book' is changed to 'AddBook'
 		book b = new book(a, t, c, NextBID());
-		CATALOG.put(b.ID(), b);		
+		catalog.put(b.ID(), b);		
 		return b;
 	}
 
 	
-	public member MEMBER(int memberId) {
-		if (MEMBERS.containsKey(memberId)) 
-			return MEMBERS.get(memberId);
+	public member getMemberById(int memberId) {//'MEMBER' is changed to 'getMemberById'
+		if (members.containsKey(memberId)) 
+			return members.get(memberId);
 		return null;
 	}
 
 	
-	public book Book(int bookId) {
-		if (CATALOG.containsKey(bookId)) 
-			return CATALOG.get(bookId);		
+	public Book getBookById(int bookId) {//'book' is changed to 'getBookById'
+		if (catalog.containsKey(bookId)) 
+			return catalog.get(bookId);		
 		return null;
 	}
 
 	
-	public int LOAN_LIMIT() {
+	public int getLoanLimit() {//'LOAN_LIMIT' is changed to 'getLoanLimit'
 		return loanLimit;
 	}
 
 	
-	public boolean MEMBER_CAN_BORROW(member member) {		
-		if (member.Number_Of_Current_Loans() == loanLimit ) 
+	public boolean MemberCanBorrow(Member member) {	//'MEMBER_CAN_BORROW' is changed to 'MemberCanBorrow'	
+		if (member.NumberOfCurrentLoans() == loanLimit ) 
 			return false;
 				
 		if (member.Fines_OwEd() >= maxFinesOwed) 
@@ -171,31 +171,31 @@ public class library implements Serializable {
 	}
 
 	
-	public int Loans_Remaining_For_Member(member member) {		
+	public int loansRemainingForMember(member member) {	//'Loans_Remaining_For_Member' is changed to 'loansRemainingForMember'	
 		return loanLimit - member.Number_Of_Current_Loans();
 	}
 
 	
-	public loan ISSUE_LAON(book book, member member) {
+	public Loan issueLoan(book book, member member) {//'ISSUE_LAON' is changed to 'issueLoan'
 		Date dueDate = Calendar.INSTANCE().Due_Date(loanPeriod);
 		loan loan = new loan(NextLID(), book, member, dueDate);
-		member.Take_Out_Loan(loan);
+		member.takeOutLoan(loan); // 'Take_Out_Loan' is changed to 'takeOutLoan'
 		book.Borrow();
-		LOANS.put(loan.ID(), loan);
-		CURRENT_LOANS.put(book.ID(), loan);
+		loans.put(loan.ID(), loan);
+		currentLoans.put(book.ID(), loan);
 		return loan;
 	}
 	
 	
-	public loan LOAN_BY_BOOK_ID(int bookId) {
-		if (CURRENT_LOANS.containsKey(bookId)) {
-			return CURRENT_LOANS.get(bookId);
+	public Loan getLoanByBookId(int bookId) {//'LOAN_BY_BOOK_ID' is changed to 'getLoanByBookId'
+		if (currentLoans.containsKey(bookId)) {
+			return currentLoans.get(bookId);
 		}
 		return null;
 	}
 
 	
-	public double CalculateOverDueFine(loan loan) {
+	public double CalculateOverDueFine(Loan loan) {
 		if (loan.OVer_Due()) {
 			long daysOverDue = Calendar.INSTANCE().Get_Days_Difference(loan.Get_Due_Date());
 			double fine = daysOverDue * finePerDay;
@@ -205,35 +205,35 @@ public class library implements Serializable {
 	}
 
 
-	public void Discharge_loan(loan currentLoan, boolean isDamaged) {
+	public void dischargeLoan(loan currentLoan, boolean isDamaged) {//'Discharge_loan' is changed to 'dischargeLoan'
 		member member = currentLoan.Member();
 		book book  = currentLoan.Book();
 		
 		double overDueFine = CalculateOverDueFine(currentLoan);
-		member.Add_Fine(overDueFine);	
+		member.addFine(overDueFine);	//'Add_Fine' is changed to 'addFine'
 		
-		member.dIsChArGeLoAn(currentLoan);
+		member.dichargeLoan(currentLoan);//'dIsChArGeLoAn' is changed to 'dichargeLoan'
 		book.Return(isDamaged);
 		if (isDamaged) {
-			member.Add_Fine(damageFee);
-			DAMAGED_BOOKS.put(book.ID(), book);
+			member.addFine(damageFee);
+			damagedBooks.put(book.ID(), book);
 		}
-		currentLoan.DiScHaRgE();
-		CURRENT_LOANS.remove(book.ID());
+		currentLoan.discharge();//'DiScHaRgE' is changed to 'discharge'
+		currentLoans.remove(book.ID());
 	}
 
 
 	public void checkCurrentLoans() {
-		for (loan loan : CURRENT_LOANS.values()) {
+		for (loan loan : currentLoans.values()) {
 			loan.checkOverDue();
 		}		
 	}
 
 
-	public void Repair_BOOK(book currentBook) {
-		if (DAMAGED_BOOKS.containsKey(currentBook.ID())) {
+	public void repairBOOK(book currentBook) {//'Repair_BOOK' is changed to 'repairBOOK'
+		if (damagedBooks.containsKey(currentBook.getId())) {
 			currentBook.Repair();
-			DAMAGED_BOOKS.remove(currentBook.ID());
+			damagedBooks.remove(currentBook.getId());
 		}
 		else {
 			throw new RuntimeException("Library: repairBook: book is not damaged");
