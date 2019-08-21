@@ -16,7 +16,7 @@ public class BorrowBookControl {
 
     private List<Book> PENDING; //'book' is changed to Book
     private List<Loan> COMPLETED;// 'loan' is changed to Loan
-    private Book bookInfo;// 'book is changed to Book', 'BOOK is changed to 'bookInfo'
+    private Book bookinfo;// 'book is changed to Book', 'BOOK is changed to 'bookinfo'
 
     public BorrowBookControl() {
         this.bookLibrary=library.getInstance(); //'Instance is changed to getinstance'// 'LIBRARY' is changed to 'bookLibrary'
@@ -53,20 +53,20 @@ public class BorrowBookControl {
     
     
     public void scanned(int bookId) {// Scanned is changed to scanned
-        bookInfo = null;// 'BOOK' is changed to bookInfo
+        bookinfo = null;// 'BOOK' is changed to bookinfo
         if (!State.equals(ControlState.SCANNING)) {//'ControlState is changed to ControlState'
             throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
         }   
-        bookInfo = bookLibrary.Book(bookId);// 'BOOK' is changed to bookInfo
-        if (bookInfo == null) {// 'BOOK' is changed to bookInfo
+        bookinfo = bookLibrary.Book(bookId);// 'BOOK' is changed to bookinfo
+        if (bookinfo == null) {// 'BOOK' is changed to bookinfo
             bookUi.display("Invalid bookId");//'UI' is changed to 'bookUi'
             return;
         }
-        if (!bookInfo.isAvaialble()) {// 'AVAILABLE 'is changed to 'isAvailable'
+        if (!Book.isAvaialble()) {// 'AVAILABLE 'is changed to 'isAvailable'
             bookUi.display("Book cannot be borrowed");//'UI' is changed to 'bookUi'
             return;
         }
-        PENDING.add(bookInfo);//'BOOK' is changed to bookInfo
+        PENDING.add(bookinfo);//'BOOK' is changed to bookinfo
         for (Book B : PENDING) {
             bookUi.display(B.toString());//'UI' is changed to 'bookUi'
         }
