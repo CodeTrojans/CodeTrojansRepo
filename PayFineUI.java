@@ -4,42 +4,42 @@ import java.util.Scanner;
 public class PayFineUI {
 
 
-	public static enum UI_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
+	public static enum UiState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; //  'UI_STATE' is changed to 'UiState'
 
-	private PayFineControl CoNtRoL;
-	private Scanner input;
-	private UI_STATE StAtE;
+	private PayFineControl control; //  'CoNtRoL' is changed to 'control'
+	private Scanner scanner; //  'input' is changed to 'scanner'
+	private UiState state; //  'UI_STATE' is changed to 'UiState' and 'StAtE' is changed to 'state'
 
 	
 	public PayFineUI(PayFineControl control) {
-		this.CoNtRoL = control;
-		input = new Scanner(System.in);
-		StAtE = UI_STATE.INITIALISED;
-		control.Set_UI(this);
+		this.control = control; //  'CoNtRoL' is changed to 'control'
+		scanner = new Scanner(System.in); //  'input' is changed to 'scanner'
+		state = UiState.INITIALISED; //  'UI_STATE' is changed to 'UiState' and 'StAtE' is changed to 'state'
+		control.setUi(this); //  'Set_UI' is changed to 'setUi'
 	}
 	
 	
-	public void Set_State(UI_STATE state) {
-		this.StAtE = state;
+	public void setState(UiState state) { //  'UI_STATE' is changed to 'UiState' and 'Set_State' is changed to 'setState'
+		this.state = state; // 'StAtE' is changed to 'state'
 	}
 
 
-	public void RuN() {
+	public void RuN() { //  'RuN' is changed to 'run'
 		output("Pay Fine Use Case UI\n");
 		
 		while (true) {
 			
-			switch (StAtE) {
+			switch (state) { // 'StAtE' is changed to 'state'
 			
 			case READY:
-				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
-				if (Mem_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
+				String member = input("Swipe member card (press <enter> to cancel): "); // 'Mem_Str' is changed to 'member'
+				if (member.length() == 0) {
+					control.cancel();  // 'CoNtRoL' is changed to 'control' and 'CaNcEl' is changed to 'cancel'
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					CoNtRoL.Card_Swiped(Member_ID);
+					int memberId = Integer.valueOf(member).intValue(); // 'Member_ID' is changed to 'memberId'
+					control.cardSwiped(memberId); // 'CoNtRoL' is changed to 'control' and 'Card_Swiped' is changed to 'cardSwiped' and 'Member_ID' is changed to 'memberId'
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");
@@ -47,21 +47,21 @@ public class PayFineUI {
 				break;
 				
 			case PAYING:
-				double AmouNT = 0;
-				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
-				if (Amt_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
+				double amount = 0; // 'AmouNT' is changed to 'amount'
+				String amountInput = input("Enter amount (<Enter> cancels) : "); // 'Amt_Str' is changed to 'amountInput'
+				if (amountInput.length() == 0) { // 'Amt_Str' is changed to 'amountInput'
+					control.cancel(); // 'CoNtRoL' is changed to 'control' and 'CaNcEl' is changed to 'cancel'
 					break;
 				}
 				try {
-					AmouNT = Double.valueOf(Amt_Str).doubleValue();
+					amount = Double.valueOf(amountInput).doubleValue(); // 'AmouNT' is changed to 'amount' and 'Amt_Str' is changed to 'amountInput'
 				}
 				catch (NumberFormatException e) {}
-				if (AmouNT <= 0) {
+				if (amount <= 0) { // 'AmouNT' is changed to 'amount'
 					output("Amount must be positive");
 					break;
 				}
-				CoNtRoL.PaY_FiNe(AmouNT);
+				control.payFine(amount); // 'CoNtRoL' is changed to 'control' and 'PaY_FiNe' is changed to 'payFine' and 'AmouNT' is changed to 'amount'
 				break;
 								
 			case CANCELLED:
@@ -74,16 +74,16 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);	// 'StAtE' is changed to 'state'		
 			
 			}		
 		}		
 	}
 
 	
-	private String input(String prompt) {
+	private String scanner(String prompt) { //  'input' is changed to 'scanner'
 		System.out.print(prompt);
-		return input.nextLine();
+		return scanner.nextLine(); //  'input' is changed to 'scanner'
 	}	
 		
 		
@@ -92,7 +92,7 @@ public class PayFineUI {
 	}	
 			
 
-	public void DiSplAY(Object object) {
+	public void display(Object object) { //  'DiSplAY' is changed to 'display'
 		output(object);
 	}
 
