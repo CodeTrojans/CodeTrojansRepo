@@ -11,10 +11,10 @@ public class ReturnBookUI {
 
 	
 	public ReturnBookUI(ReturnBookControl control) {
-		this.CoNtRoL = control;
-		input = new Scanner(System.in);
-		StATe = UI_STATE.INITIALISED;
-		control.Set_UI(this);
+		this.control = control; //  'CoNtRoL' is changed to 'control'
+		scanner = new Scanner(System.in); //  'input' is changed to 'scanner'
+		state = UiState.INITIALISED; //  'UI_STATE' is changed to 'UiState' and 'StAtE' is changed to 'state'
+		control.setUi(this); //  'Set_UI' is changed to 'setUi'
 	}
 
 
