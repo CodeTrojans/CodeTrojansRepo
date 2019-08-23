@@ -64,9 +64,9 @@ public class ReturnBookUI {
 	}
 
 	
-	private String input(String prompt) {
+	private String scanner(String prompt) { //  'input' is changed to 'scanner'
 		System.out.print(prompt);
-		return input.nextLine();
+		return scanner.nextLine(); //  'input' is changed to 'scanner'
 	}	
 		
 		
