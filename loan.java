@@ -3,76 +3,76 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-public class Loan implements Serializable { // "loan" changed to "Loan"
+public class Loan implements Serializable { // 'loan' is changed to 'Loan'
 	
-	public Static  Loan State { CURRENT, OVER_DUE, DISCHARGED };  // "LOAN_STATE" changed to "Loan state" 
+	public static enum LoanState { CURRENT, OVER_DUE, DISCHARGED }; // 'LOAN_STATE' is changed to 'LoanState'
 	
-	private int Id; // "ID" changed to Id
-	private Book B;// "book" changed to Book
-	private Member M; // "member" changed to "Member"
-	private Date D;
-	private Loan State State; // "LOAN_STATE" changed to Loan State, 'state to State
+	private int ID; // 'ID' is changed to 'id'
+	private Book book; // 'book' is changed to 'Book' and 'B' is changed to 'book'
+	private Member member; // 'member' is changed to 'Member' and 'M' is changed to 'member'
+	private Date date; // 'D' is changed to 'date'
+	private LoanState state; // 'LOAN_STATE' is changed to 'LoanState'
 
 	
-	public Loan(int loanId, book book, member member, Date dueDate) {
-		this.Id = LoanId;
-		this.B = Book;
-		this.M = Member;
-		this.D = DueDate;
-		this.State = LOAN_STATE.CURRENT;//"LOAN_STATE.CURRENT" changed to Loan State.Current
+	public Loan(int loanId, Book book, Member member, Date dueDate) { // 'loan' is changed to 'Loan' and 'book' is changed to 'Book' and 'member' is changed to 'Member'
+		this.id = loanId; // 'ID' is changed to 'id'
+		this.book = book; //'B' is changed to 'book'
+		this.member = member; //'M' is changed to 'member'
+		this.date = dueDate; // 'D' is changed to 'date'
+		this.state = LoanState.CURRENT; // 'LOAN_STATE' is changed to 'LoanState'
 	}
 
 	
-	public void Checkoverdue() { // checkOverDue changed to Checkoverdue
-		if (state == LOAN_STATE.CURRENT && //"LOAN_STATE.CURRENT" changed to Loan State.Current
-			Calendar.Instance().Date().After(D)) { //"INSTANCE" changed to Instance
-			this.state = Loan State.OverDue; //"LOAN_STATE.OVER_DUE" changed to Loan State.Overdue		 	
+	public void checkOverDue() {
+		if (state == LoanState.CURRENT && // 'LOAN_STATE' is changed to 'LoanState'
+			Calendar.INSTANCE().Date().after(date)) { // 'D' is changed to 'date'
+			this.state = LoanState.overDue; // 'LOAN_STATE' is changed to 'LoanState'	and 'OVER_DUE' is changed to 'overDue'		
 		}
 	}
 
 	
-	public boolean Overdue() { //"OVERDUE" changed to OVERDUE
-		return state == Loan State.OverDue; //"LOAN_STATE.OVER_DUE" changed to Loan State.Overdue
+	public boolean overDue() { //'OVER_DUE' is changed to 'overDue'
+		return state == LoanState.overDue; // 'LOAN_STATE' is changed to 'LoanState'	and 'OVER_DUE' is changed to 'overDue'	
 	}
 
 	
-	public Integer ID() { // "ID" changed to Id
-		return ID;// "ID" changed to Id
+	public Integer id() { // 'ID' is changed to 'id'
+		return id; // 'ID' is changed to 'id'
 	}
 
 
-	public Date Get DueDate() { //"GET DUE DATE" changed to Get DueDate
-		return D;
+	public Date getDuedate() { // 'Get_Due_Date' is changed to 'getDuedate'
+		return date; // 'D' is changed to 'date'
 	}
 	
 	
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy"); //"MM" changed to mm
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(M.GeT_ID()).append(" : ")
-		  .append(M.Get_LastName()).append(", ").append(M.Get_FirstName()).append("\n")
-		  .append("  Book ").append(B.ID()).append(" : " )
-		  .append(B.TITLE()).append("\n")
+		sb.append("Loan:  ").append(id).append("\n") // 'ID' is changed to 'id'
+		  .append("  Borrower ").append(member.getId()).append(" : ") //'M' is changed to 'member'  and 'GeT_ID' is changed to 'getId'
+		  .append(member.getLastName()).append(", ").append(member.getFirstName()).append("\n") //'M' is changed to 'member' and 'Get_LastName' is changed to 'getLastName' and 'Get_FirstName' is changed to 'getFirstName'
+		  .append("  Book ").append(book.id()).append(" : " ) // 'ID' is changed to 'id' and 'B' is changed to 'book'
+		  .append(book.title()).append("\n") //'B' is changed to 'book' and 'TITLE' is changed to 'title'
 		  .append("  DueDate: ").append(sdf.format(D)).append("\n")
 		  .append("  State: ").append(state);		
 		return sb.toString();
 	}
 
 
-	public Member Member() { "member" changed to "Member"
-		return M;
+	public Member member() { // 'member' is changed to 'Member' and 'Member' is changed to 'member'
+		return member; // 'M' is changed to 'member'
 	}
 
 
-	public Book Book() { // "book" changed to Book
-		return B;
+	public Book book() { // 'book' is changed to 'Book' and 'Book' is changed to 'book'
+		return book; // 'B' is changed to 'book'
 	}
 
 
-	public void Discharge() { //"DISCHARGE" changed to Discharge
-		state = Loan State.Discharged;	//"LOAN_STATE.DISCHARGE" changed to Loan State.Discharged	
+	public void discharge() { // 'DiScHaRgE' is changed to 'discharge'
+		state = LoanState.DISCHARGED;	// 'LOAN_STATE' is changed to 'LoanState'	
 	}
 
 }
