@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private Static Scanner In; // "IN" changed to in
-	private Static library Lib; // "LIB" changed to Lib
-	private Static String Menu ; // "MENU" changed to Menu
-	private Static Calendar Cal; // "CAL" changed to Cal
-	private Static SimpleDateFormat Sdf; // "SDF" changed to Sdf
+	private Static Scanner scanner; // "IN" changed to scanner
+	private Static Library library; // "LIB" changed to library
+	private Static String menu ; // "MENU" changed to menu
+	private Static Calendar calendar; // "CAL" changed to calendar
+	private Static SimpleDateFormat simpleDateFormat; // "SDF" changed to simpleDateFormat
 	
 	
-	private Static String Get_menu() {
+	private Static String getMenu() {// 'Get_menu' changed to 'getMenu'
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("\nLibrary Main Menu\n\n")
@@ -37,70 +37,70 @@ public class Main {
 	}
 
 
-	public Static void main(String[] args) {		
+	public static void main(String[] args) {	 //	'Static' is changed to 'static'
 		try {			
-			In = new Scanner(System.in); // "IN" changed to in,"INSTANCE" changed to Instance
-			Lib = library.Instance();//"LIB" changed to Lib,"INSTANCE" changed to Instance
-			Cal = Calendar.Instance();// "CAL" changed to Cal
-			Sdf = new SimpleDateFormat("dd/mm/yyyy");// "SDF" changed to Sdf."MM" changed to mm
+			scanner = new Scanner(System.in); // "IN" changed to 'scanner'
+			library = Library.Instance();//"LIB" changed to 'library'
+			calendar = Calendar.Instance();// "CAL" changed to calendar
+			simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");// "SDF" changed to 'simpleDateFormat'
 	
-			for (member m : Lib.Members()) {  //"LIB" changed to Lib,"MEMBERS" changed to Members
+			for (Member m : library.members()) {  //"LIB" changed to library,"MEMBERS" changed to Members
 				output(m);
 			}
 			output(" ");
-			for (book b : Lib.Books()) { //"LIB" changed to Lib,"BOOKS" changed to Books
+			for (Book b : library.books()) { //"LIB" changed to library,"BOOKS" changed to books
 				output(b);
 			}
 						
-			Menu = Get_menu();// "MENU" changed to Menu
+			menu = GetMenu();// "MENU" changed to 'menu' and 'Get_Menu' is changed to 'GetMenu'
 			
 			boolean e = false;
 			
 			while (!e) {
 				
-				output("\n" + Sdf.format(CAL.Date()));// "SDF" changed to Sdf
-				String c = input(Menu);// "MENU" changed to Menu
+				output("\n" + simpleDateFormat.format(calendar.Date()));// "SDF" changed to 'simpleDateFormat'
+				String c = input(menu);// "MENU" changed to menu
 				
 				switch (c.toUpperCase()) {
 				
 				case "M": 
-					Add_Member(); // "ADD" changed to add, "MEMBER" changed to member
+					addMember(); // "ADD" changed to addMember, "MEMBER" changed to member
 					break;
 					
 				case "LM": 
-					Members();// "MEMBERS" changed to members
+					members();// "MEMBERS" changed to members
 					break;
 					
 				case "B": 
-					Add_Book();// "ADD" changed to add, "Book" changed to Book
+					addBook();// "ADD" changed to addBook
 					break;
 					
 				case "LB": 
-					Books();//"Book" changed to Book
+					books();//"Book" changed to books
 					break;
 					
 				case "FB": 
-					Fix_Books();//"FIX_BOOKS" changed to Fix_Books
+					fixBooks();//"FIX_BOOKS" changed to fixBooks
 					break;
 					
 				case "L": 
-					Borrow_Book();//"BORROW_BOOK" changed to Borrow_Book
+					borrowBook();//"BORROW_BOOK" changed to borrowBook
 					break;
 					
 				case "R": 
-					Return_Book();//"RETURN_BOOK" changed to Return_Book
+					returnBook();//"RETURN_BOOK" changed to returnBook
 					break;
 					
 				case "LL": 
-					CURRENT_LOANS();//"CURRENT_LOANS" changed to Fix_Books
+					currentLoans();//"CURRENT_LOANS" changed to currentLoans
 					break;
 					
 				case "P": 
-					FINES();//"FINES" changed to Fix_Books
+					fines();//"FINES" changed to fines
 					break;
 					
 				case "T": 
-					INCREMENT_DATE();//"INCREMENT_DATE" changed to Fix_Books
+					incrementDate();//"INCREMENT_DATE" changed to incrementDate
 					break;
 					
 				case "Q": 
@@ -112,7 +112,7 @@ public class Main {
 					break;
 				}
 				
-				library.Save();//"SAVE" changed to Save
+				library.save();//"SAVE" changed to save
 			}			
 		} catch (RuntimeException e) {
 			output(e);
@@ -120,59 +120,60 @@ public class Main {
 		output("\nEnded\n");
 	}	
 
-		private Static void Fines() { //"FINES" changed to Fines
-		new PayFineUI(new PayFineControl()).RuN();		
+	
+	private static void Fines() { //"Static" changed to static
+		new payFineUI(new PayFineControl()).run();	//'RuN' is changed to 'run'	
 	}
 
 
-	private Static void CURRENT_LOANS(){ //"CURRENT_LOANS" changed to Fix_Books
+	private static void currentLoans(){ //"CURRENT_LOANS" changed to 'currentLoans' and 'Static' is changed to 'static'
 		output("");
-		for (loan loan : Lib.CurrentLoans()) { //"LIB" changed to Lib
+		for (Loan loan : library.currentLoans()) { //"LIB" changed to library
 			output(loan + "\n");
 		}		
 	}
 
 
 
-	private Static void Books() { //"BOOKS" changed to Books
+	private static void books() { //"BOOKS" changed to books and Static is changed to 'static'
 		output("");
-		for (book book : Lib.Books()) { //"LIB.BOOKS" changed to Lib.Books
+		for (Book book : libary.books()) { //"LIB.BOOKS" changed to libary.books
 			output(book + "\n");
 		}		
 	}
 
 
 
-	private Static void Members() { //"MEMBERS" changed to members
+	private static void members() { //"MEMBERS" changed to members and Static is changed to 'static'
 		output("");
-		for (member member : Lib.Members()) { //"LIB.MEMBERS" changed to Lib.Members
+		for (Member member : libary.members()) { //"LIB.MEMBERS" changed to libary.members
 			output(member + "\n");
 		}		
 	}
 
 
 
-	private Static void Borrow_Book() { //"BORROW_BOOK" changed to Borrow_Book
+	private static void borrowBook() { //"BORROW_BOOK" changed to borrowBook  and Static is changed to 'static'
 		new BorrowBookUI(new BorrowBookControl()).run();	 
 	}
 
 
-	private Static void Return_Book() { //"RETURN_BOOK" changed to Return_Book
-		new ReturnBookUI(new ReturnBookControl()).Run();	 //"RuN" changed to Run	
+	private static void returnBook() { //"RETURN_BOOK" changed to returnBook  and Static is changed to 'static'
+		new ReturnBookUI(new ReturnBookControl()).run();	 //"RuN" changed to run	
 	}
 
 
-	private static void Fix_books() { //"FIX_BOOKS" changed to Fix_Books
-		new FixBookUI(new FixBookControl()).RuN();	
+	private static void fixBooks() { //"FIX_BOOKS" changed to fixBooks  and Static is changed to 'static'
+		new FixBookUI(new FixBookControl()).run();	
 	}
 
 
-	private Static void Increment_Date() { //"INCREMENT_DATE" changed to Increment_Date
+	private static void incrementDate() { //"INCREMENT_DATE" changed to incrementDate
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
-			CAL.incrementDate(days);
-			LIB.checkCurrentLoans();
-			output(Sdf.format(Cal.Date()));//"CAL" changed to Cal,"SDF" to Sdf
+			calendar.incrementDate(days);
+			library.checkCurrentLoans();
+			output(simpleDateFormat.format(calendar.Date()));//"CAL" changed to calendar,"SDF" to simpleDateFormat
 			
 		} catch (NumberFormatException e) {
 			 output("\nInvalid number of days\n");
@@ -180,25 +181,25 @@ public class Main {
 	}
 
 
-	private Static void ADD_BOOK() { //"ADD_BOOK" changed to Add_Book
+	private static void addBook() { //"ADD_BOOK" changed to addBook and Static is changed to 'static'
 		
-		String A = input("Enter author: ");
-		String T  = input("Enter title: ");
-		String C = input("Enter call number: ");
-		book B = LIB.Add_book(A, T, C); // "LIB" changed to Lib
+		String author = input("Enter author: "); //A  is changed to author
+		String title  = input("Enter title: ");//T is changed to title
+		String callNumber = input("Enter call number: ");//C is changed to callNumber
+		Book book = library.addBook(author, title, callNumber); // "LIB" changed to library
 		output("\n" + B + "\n");
 		
 	}
 
 	
-	private Static void ADD_MEMBER() { // "ADD" changed to add, "MEMBER" changed to member
+	private static void addMember() { // "ADD_MEMEBR" is changed to addMember  and Static is changed to 'static'
 		try {
-			String LN = input("Enter last name: ");
-			String FN  = input("Enter first name: ");
-			String EM = input("Enter email: ");
-			int PN = Integer.valueOf(input("Enter phone number: ")).intValue();
-			member M = Lib.Add_mem(LN, FN, EM, PN); // "LIB" changed to Lib
-			output("\n" + M + "\n");
+			String lastName = input("Enter last name: "); // LN is changed to lastName
+			String firstName  = input("Enter first name: ");//FN is changed to firstName
+			String email = input("Enter email: ");//EM is changed to email
+			int phoneNumber = Integer.valueOf(input("Enter phone number: ")).intValue();// PN is changed to phoneNumber
+			Member member = library.addMember(LN, FN, EM, PN); // "LIB" changed to library
+			output("\n" + member + "\n");
 			
 		} catch (NumberFormatException e) {
 			 output("\nInvalid phone number\n");
@@ -207,14 +208,14 @@ public class Main {
 	}
 
 
-	private Static String input(String prompt) {
+	private static String input(String prompt) {  // Static is changed to 'static'
 		System.out.print(prompt);
-		return IN.nextLine();
+		return scanner.nextLine();
 	}
 	
 	
 	
-	private Static void output(Object object) {
+	private static void output(Object object) { //   Static is changed to 'static'
 		System.out.println(object);
 	}
 
