@@ -3,11 +3,11 @@ import java.util.Scanner;
 
 public class ReturnBookUI {
 
-	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
+	public static enum UiState { INITIALISED, READY, INSPECTING, COMPLETED }; //  'UI_STATE' is changed to 'UiState'
 
-	private ReturnBookControl CoNtRoL;
-	private Scanner input;
-	private UI_STATE StATe;
+	private ReturnBookControl control;  //  'CoNtRoL' is changed to 'control'
+	private Scanner scanner; //  'input' is changed to 'scanner'
+	private UiState state; //  'UI_STATE' is changed to 'UiState' and 'StAtE' is changed to 'state'
 
 	
 	public ReturnBookUI(ReturnBookControl control) {
@@ -81,7 +81,5 @@ public class ReturnBookUI {
 	
 	public void Set_State(UI_STATE state) {
 		this.StATe = state;
-	}
-
-	
+	}	
 }
