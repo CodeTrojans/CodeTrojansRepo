@@ -5,7 +5,7 @@ public class BorrowBookUI {
 	
 	public static enum UiState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };// UiState is a change based to code guidelines
 
-	private BorrowBookControl bookControl;// Control is changed to bookControl
+	private BorrowBookControl bookControl;// 'Control' is changed to 'bookControl'
 	private Scanner inputScanner;// input is changed to inputScanner
 	private UiState uiState;// State is changed to uistate, UI_State is changed to UiSate
 
