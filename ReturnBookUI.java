@@ -18,25 +18,25 @@ public class ReturnBookUI {
 	}
 
 
-	public void RuN() {		
+	public void run() {	//  'RuN' is changed to 'run'	
 		output("Return Book Use Case UI\n");
 		
 		while (true) {
 			
-			switch (StATe) {
+			switch (state) { // 'StAtE' is changed to 'state'
 			
 			case INITIALISED:
 				break;
 				
 			case READY:
-				String Book_STR = input("Scan Book (<enter> completes): ");
-				if (Book_STR.length() == 0) {
-					CoNtRoL.Scanning_Complete();
+				String book = input("Scan Book (<enter> completes): ");  // 'Book_STR' is changed to 'book'
+				if (book.length() == 0) { // 'Book_STR' is changed to 'book'
+					control.scanningComplete(); //  'CoNtRoL' is changed to 'control' 'Scanning_Complete' is changed to 'scanningComplete'
 				}
 				else {
 					try {
-						int Book_Id = Integer.valueOf(Book_STR).intValue();
-						CoNtRoL.Book_scanned(Book_Id);
+						int bookId = Integer.valueOf(book).intValue(); // 'Book_STR' is changed to 'book' and 'Book_Id' is changed to 'bookId'
+						control.bookScanned(bookId); //  'CoNtRoL' is changed to 'control' and 'Book_scanned' is changed to 'bookScanned' and 'Book_Id' is changed to 'bookId'
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -45,12 +45,12 @@ public class ReturnBookUI {
 				break;				
 				
 			case INSPECTING:
-				String ans = input("Is book damaged? (Y/N): ");
-				boolean Is_Damaged = false;
-				if (ans.toUpperCase().equals("Y")) {					
-					Is_Damaged = true;
+				String isBookDamaged = input("Is book damaged? (Y/N): "); //  'ans' is changed to 'isBookDamaged'
+				boolean isDamaged = false; //  'Is_Damaged' is changed to 'isDamaged'
+				if (isBookDamaged.toUpperCase().equals("Y")) { //  'ans' is changed to 'isBookDamaged'					
+					isDamaged = true; //  'Is_Damaged' is changed to 'isDamaged'
 				}
-				CoNtRoL.Discharge_loan(Is_Damaged);
+				control.dischargeLoan(Is_Damaged); //  'CoNtRoL' is changed to 'control' and 'Is_Damaged' is changed to 'isDamaged' and 'Discharge_loan' is changed to 'dischargeLoan'
 			
 			case COMPLETED:
 				output("Return processing complete");
